@@ -1,19 +1,38 @@
 <template>
   <div id="app" class="gameArea">
-    <ObjectsBox />
+    <div class="header__pauseButton"
+         @click="togglePause">d
+      <font-awesome-icon :icon="pauseButton"></font-awesome-icon>
+    </div>
+    <ObjectsDropbox />
     <TeeterTottle />
   </div>
 </template>
 
 <script>
-import ObjectsBox from './components/ObjectsBox'
+import ObjectsDropbox from './components/ObjectsDropbox'
 import TeeterTottle from './components/TeeterTottle'
+import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons'
+import {mapMutations, mapState} from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    ObjectsBox,
+    ObjectsDropbox,
     TeeterTottle
+  },
+  computed: {
+    ...mapState({
+      isPaused: state => state.isPaused
+    }),
+    pauseButton() {
+      return this.isPaused ? faPlay : faPause
+    }
+  },
+  methods: {
+    ...mapMutations({
+      togglePause: 'togglePause'
+    }),
   }
 }
 </script>

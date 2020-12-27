@@ -16,7 +16,7 @@ function generateRandomObject() {
 
 function calcSomeOfObjects(array) {
     return array.reduce((acc, item) => {
-        return acc += item.weight * item.offset
+        return acc += item.weight * item.position
     }, 0)
 }
 

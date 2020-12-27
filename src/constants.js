@@ -5,3 +5,7 @@ export const MAX_BENDING = 30;
 export const MIN_BENDING = -30;
 export const MAX_SIDES_DIFFERENCE = 20;
 export const SHAPE_COUNT = 3;
+export const INITIAL_TIMEOUT = 300;
+export const FALLING_BLOCKS_COUNT = 2;
+export const TIMEOUT_STEP_DECREASING = 50;
+export const ITERATION_COUNT_INCREASING = 5;
