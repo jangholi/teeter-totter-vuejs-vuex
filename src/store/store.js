@@ -1,30 +1,35 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {MAX_BENDING} from '../constants'
-import {calcSomeOfObjects} from '../helpers'
+import {calcSomeOfObjects, generateRandomObject} from '../helpers'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        leftSideBlocks: [],
-        rightSideBlocks: []
+        leftSideObjects: [],
+        rightSideObjects: []
     },
     getters: {
             someOfLeftSideObjects(state) {
-                return calcSomeOfObjects(state.leftSideBlocks)
+                return calcSomeOfObjects(state.leftSideObjects)
             },
             someOfRightSideObjects(state) {
-                return calcSomeOfObjects(state.rightSideBlocks)
+                return calcSomeOfObjects(state.rightSideObjects)
             },
-            swingBending(state, getters) {
+            swingBendingDegree(state, getters) {
                 const {someOfLeftSideObjects: leftSum, someOfRightSideObjects: rightSum} = getters;
 
                 if (!leftSum) return MAX_BENDING;
                 if (leftSum === rightSum) return 0;
                 return leftSum > rightSum ? (leftSum - rightSum) / leftSum * -100 : (rightSum - leftSum) / rightSum * 100
-            },
+            }
     },
-    mutations: {},
+    mutations: {
+        addObjectToRight(state) {
+            const randomBlock = generateRandomObject();
+            state.rightSideObjects.push(randomBlock)
+        },
+    },
     actions: {}
 });
