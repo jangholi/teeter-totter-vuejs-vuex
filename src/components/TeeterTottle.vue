@@ -1,13 +1,13 @@
 <template>
     <section class="teeterTottle">
         <div class="swing" :style="swingInlineStyle">
-            <Block v-for="block in leftSideObjects"
+            <Block v-for="(block, index) in leftSideObjects"
                    :block="block"
-                   :key="block.id"/>
-            <Block v-for="block in rightSideObjects"
+                   :key="index" />
+            <Block v-for="(block, index) in rightSideObjects"
                    :block="block"
                    :side="true"
-                   :key="block.id"/>
+                   :key="index" />
         </div>
         <div class="pillar"></div>
     </section>
