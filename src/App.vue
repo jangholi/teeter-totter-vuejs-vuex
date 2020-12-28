@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="gameArea">
     <div class="header__pauseButton"
-         @click="togglePause">d
+         @click="togglePause">
       <font-awesome-icon :icon="pauseButton"></font-awesome-icon>
     </div>
     <ObjectsDropbox />
